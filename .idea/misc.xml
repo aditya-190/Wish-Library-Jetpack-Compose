@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="Wish/src/main/res/drawable/default_delete.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_error.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_info.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_info_blue.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_info_yellow.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_internet.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_internet_cloud.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_success.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/default_warning.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_delete.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_error.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_info_blue.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_info_yellow.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_internet_cloud.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_success.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/icon_warning.xml" value="0.1" />
+        <entry key="Wish/src/main/res/drawable/toast_background.xml" value="0.1" />
+        <entry key="Wish/src/main/res/layout/main.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
