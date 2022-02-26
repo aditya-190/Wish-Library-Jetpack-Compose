@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/compose-model-1645773503333.xml" value="0.5867208672086721" />
+        <entry key="../../../../layout/compose-model-1645773738153.xml" value="0.3861788617886179" />
         <entry key="Wish/src/main/res/drawable/default_delete.xml" value="0.1" />
         <entry key="Wish/src/main/res/drawable/default_error.xml" value="0.1" />
         <entry key="Wish/src/main/res/drawable/default_info.xml" value="0.1" />
@@ -21,6 +23,7 @@
         <entry key="Wish/src/main/res/drawable/icon_warning.xml" value="0.1" />
         <entry key="Wish/src/main/res/drawable/toast_background.xml" value="0.1" />
         <entry key="Wish/src/main/res/layout/main.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/icon_success.xml" value="0.1425" />
       </map>
     </option>
   </component>
