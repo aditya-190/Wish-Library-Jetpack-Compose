@@ -15,12 +15,6 @@ val successColor = Color(0xFF17B978)
 val infoColor = Color(0xFF0340DA)
 val deleteColor = Color(0xFF0288D1)
 
-val warningColorTransparent = warningColor.copy(alpha = 0.2F)
-val errorColorTransparent = errorColor.copy(alpha = 0.2F)
-val successColorTransparent = successColor.copy(alpha = 0.2F)
-val infoColorTransparent = infoColor.copy(alpha = 0.2F)
-val deleteColorTransparent = deleteColor.copy(alpha = 0.2F)
-
 val Colors.backgroundColor
     @Composable
     get() = if (isLight) Color(0xFFEEECEC) else Color(0xFF2F3032)

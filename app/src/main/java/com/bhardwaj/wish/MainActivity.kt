@@ -10,7 +10,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WishTheme {
-
+                Wish(
+                    title = "Testing",
+                    style = WishesStyles.COLORED_SUCCESS,
+                    message = "Wish Testing Here,",
+                )
             }
         }
     }
