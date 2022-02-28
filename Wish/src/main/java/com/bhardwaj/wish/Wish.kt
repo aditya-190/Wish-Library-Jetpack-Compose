@@ -5,11 +5,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Snackbar
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,37 +36,37 @@ fun Wish(
 ) {
     val wishColor: Color
     val wishIcon: Painter
-    val coloredList = listOf(
-        WishesStyles.COLORED_SUCCESS,
-        WishesStyles.COLORED_INFORMATION,
-        WishesStyles.COLORED_WARNING,
-        WishesStyles.COLORED_ERROR,
-        WishesStyles.COLORED_DELETE,
-        WishesStyles.COLORED_NO_INTERNET
+    val tintedList = listOf(
+        WishesStyles.SUCCESS_TINT,
+        WishesStyles.INFO_TINT,
+        WishesStyles.WARNING_TINT,
+        WishesStyles.ERROR_TINT,
+        WishesStyles.DELETE_TINT,
+        WishesStyles.NO_INTERNET_TINT
     )
 
     when (style) {
-        WishesStyles.SUCCESS, WishesStyles.COLORED_SUCCESS -> {
+        WishesStyles.SUCCESS, WishesStyles.SUCCESS_TINT -> {
             wishColor = successColor
             wishIcon = painterResource(id = R.drawable.icon_success)
         }
-        WishesStyles.INFORMATION, WishesStyles.COLORED_INFORMATION -> {
+        WishesStyles.INFO, WishesStyles.INFO_TINT -> {
             wishColor = infoColor
             wishIcon = painterResource(id = R.drawable.icon_info_blue)
         }
-        WishesStyles.WARNING, WishesStyles.COLORED_WARNING -> {
+        WishesStyles.WARNING, WishesStyles.WARNING_TINT -> {
             wishColor = warningColor
             wishIcon = painterResource(id = R.drawable.icon_warning)
         }
-        WishesStyles.ERROR, WishesStyles.COLORED_ERROR -> {
+        WishesStyles.ERROR, WishesStyles.ERROR_TINT -> {
             wishColor = errorColor
             wishIcon = painterResource(id = R.drawable.icon_error)
         }
-        WishesStyles.DELETE, WishesStyles.COLORED_DELETE -> {
+        WishesStyles.DELETE, WishesStyles.DELETE_TINT -> {
             wishColor = deleteColor
             wishIcon = painterResource(id = R.drawable.icon_delete)
         }
-        WishesStyles.NO_INTERNET, WishesStyles.COLORED_NO_INTERNET -> {
+        WishesStyles.NO_INTERNET, WishesStyles.NO_INTERNET_TINT -> {
             wishColor = warningColor
             wishIcon = painterResource(id = R.drawable.icon_internet)
         }
@@ -84,8 +83,8 @@ fun Wish(
         contentColor = wishColor.copy(alpha = 0F),
         elevation = 0.dp
     ) {
-        if (style in coloredList) {
-            ColoredWish(
+        if (style in tintedList) {
+            TintedWish(
                 title = title,
                 message = message,
                 wishColor = wishColor,
@@ -202,7 +201,7 @@ private fun SimpleWish(
 }
 
 @Composable
-private fun ColoredWish(
+private fun TintedWish(
     title: String?,
     message: String,
     wishColor: Color,
@@ -226,7 +225,9 @@ private fun ColoredWish(
 
     ) {
         Row(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -237,7 +238,7 @@ private fun ColoredWish(
                     .height(40.dp)
                     .width(40.dp)
                     .scale(scale)
-                    .padding(start = 8.dp)
+                    .clip(RoundedCornerShape(20.dp))
                     .background(Color.White)
                     .padding(8.dp)
             )
