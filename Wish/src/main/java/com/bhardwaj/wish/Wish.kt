@@ -5,16 +5,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.material.Snackbar
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -26,13 +25,10 @@ import com.bhardwaj.wish.ui.theme.*
 
 @Composable
 fun Wish(
-    modifier: Modifier = Modifier,
     title: String? = null,
     message: String,
     style: WishesStyles,
-    shape: Shape = MaterialTheme.shapes.medium,
-    actionOnNewLine: Boolean = false,
-    action: @Composable (() -> Unit)? = null,
+    duration: Int = 2000,
 ) {
     val wishColor: Color
     val wishIcon: Painter
@@ -43,6 +39,14 @@ fun Wish(
         WishesStyles.ERROR_TINT,
         WishesStyles.DELETE_TINT,
         WishesStyles.NO_INTERNET_TINT
+    )
+
+    val visible by remember { mutableStateOf(false) }
+    val alpha by animatedOpacity(
+        animation = tween(
+            delayMillis = duration
+        ),
+        visible = visible
     )
 
     when (style) {
@@ -72,31 +76,34 @@ fun Wish(
         }
     }
 
-    Snackbar(
-        modifier = modifier
-            .fillMaxHeight(0.2F)
-            .padding(all = 12.dp),
-        action = action,
-        actionOnNewLine = actionOnNewLine,
-        shape = shape,
-        backgroundColor = wishColor.copy(alpha = 0F),
-        contentColor = wishColor.copy(alpha = 0F),
-        elevation = 0.dp
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
     ) {
-        if (style in tintedList) {
-            TintedWish(
-                title = title,
-                message = message,
-                wishColor = wishColor,
-                wishIcon = wishIcon
-            )
-        } else {
-            SimpleWish(
-                title = title,
-                message = message,
-                wishColor = wishColor,
-                wishIcon = wishIcon
-            )
+        Snackbar(
+            modifier = Modifier
+                .fillMaxHeight(0.2F)
+                .padding(all = 12.dp)
+                .alpha(alpha),
+            backgroundColor = wishColor.copy(alpha = 0F),
+            contentColor = wishColor.copy(alpha = 0F),
+            elevation = 0.dp
+        ) {
+            if (style in tintedList) {
+                TintedWish(
+                    title = title,
+                    message = message,
+                    wishColor = wishColor,
+                    wishIcon = wishIcon
+                )
+            } else {
+                SimpleWish(
+                    title = title,
+                    message = message,
+                    wishColor = wishColor,
+                    wishIcon = wishIcon
+                )
+            }
         }
     }
 }
@@ -281,4 +288,19 @@ private fun TintedWish(
             }
         }
     }
+}
+
+@Composable
+private fun animatedOpacity(
+    animation: AnimationSpec<Float>,
+    visible: Boolean
+): State<Float> {
+    val alpha = remember { Animatable(if (!visible) 1f else 0f) }
+    LaunchedEffect(visible) {
+        alpha.animateTo(
+            if (visible) 1f else 0f,
+            animationSpec = animation
+        )
+    }
+    return alpha.asState()
 }

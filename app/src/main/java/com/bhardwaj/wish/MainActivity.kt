@@ -12,8 +12,9 @@ class MainActivity : ComponentActivity() {
             WishTheme {
                 Wish(
                     title = "Testing",
-                    style = WishesStyles.COLORED_SUCCESS,
-                    message = "Wish Testing Here,",
+                    style = WishesStyles.SUCCESS,
+                    message = "Wish Testing Here.",
+                    duration = 10000
                 )
             }
         }
