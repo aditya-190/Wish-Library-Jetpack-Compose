@@ -13,8 +13,7 @@ class MainActivity : ComponentActivity() {
                 Wish(
                     title = "Testing",
                     style = WishesStyles.SUCCESS,
-                    message = "Wish Testing Here.",
-                    duration = 10000
+                    message = "Wish Testing Here."
                 )
             }
         }
